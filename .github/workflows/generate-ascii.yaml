@@ -16,6 +16,7 @@ jobs:
           path: tempfile.txt
 
   job-2:
+    needs: job-1
     runs-on: ubuntu-latest
     steps:
       - name: Download temp file
