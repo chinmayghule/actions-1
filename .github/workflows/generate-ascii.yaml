@@ -3,16 +3,25 @@ name: Generate ASCII artwork
 on: push
 
 jobs:
-  ascii_job:
+  job-1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+      - name: Create temp file
+        run: echo "This is a temp file." >> tempfile.txt
 
-      - name: List repo files
-        run: ls -ltra
+      - name: Upload temp file
+        uses: actions/upload-artifact@v4
+        with:
+          name: temp-file-artifact
+          path: tempfile.txt
 
-      - name: Executing shell script
-        run: |
-          chmod +x ascii-script.sh
-          ./ascii-script.sh
+  job-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download temp file
+        uses: actions/download-artifact@v4
+        with:
+          name: temp-file-artifact
+
+      - name: Test file exists
+        run: cat tempfile.txt
