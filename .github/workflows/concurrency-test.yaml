@@ -1,0 +1,13 @@
+name: My First Workflow
+
+on: workflow_dispatch
+
+jobs:
+  concurrency_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: False complex job
+        run: |
+          echo "Complex job is running..."
+          sleep 30s
+          echo "Complex job has ended"
