@@ -1,10 +1,13 @@
-name: My First Workflow
+name: Concurrency Test
 
 on: workflow_dispatch
 
 jobs:
   concurrency_job:
     runs-on: ubuntu-latest
+    concurrency:
+      group: complex-task
+      cancel-in-progress: true
     steps:
       - name: False complex job
         run: |
