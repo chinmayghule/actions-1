@@ -10,7 +10,8 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: False complex job
+        timeout-minutes: 1
         run: |
           echo "Complex job is running..."
-          sleep 30s
+          sleep 300s
           echo "Complex job has ended"
