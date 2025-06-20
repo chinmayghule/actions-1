@@ -13,5 +13,12 @@ jobs:
         timeout-minutes: 1
         run: |
           echo "Complex job is running..."
-          sleep 300s
+          sleep 15s
           echo "Complex job has ended"
+
+  conditional_job:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conditional job
+        run: echo "conditional job finished"
